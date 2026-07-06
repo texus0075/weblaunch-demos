@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mewar Clinic | Printable A4 Flyer</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --bg-light: #f8fafc;
+            --border-color: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* A4 Page Dimensions Configuration */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            background: #cbd5e1;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        /* A4 Container */
+        .a4-container {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            padding: 15mm;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* Print Controls */
+        .no-print-controls {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-print {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .btn-print:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-back {
+            background: #475569;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background: #334155;
+            transform: translateY(-2px);
+        }
+
+        /* Flyer Styles */
+        .flyer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 8mm;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            color: var(--primary);
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .badge-emergency {
+            background: #ef4444;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 8mm;
+            margin-top: 8mm;
+            flex-grow: 1;
+        }
+
+        /* Left Column */
+        .left-col {
+            display: flex;
+            flex-direction: column;
+            gap: 6mm;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+            margin-bottom: 3mm;
+            text-transform: uppercase;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .bullet-list li {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bullet-list li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        /* Right Column */
+        .right-col {
+            display: flex;
+            flex-direction: column;
+            gap: 6mm;
+        }
+
+        .doctor-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-light);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .doctor-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+        }
+
+        .doctor-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .doctor-sub {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .doctor-exp {
+            font-size: 0.75rem;
+            background: #e2e8f0;
+            color: #475569;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .doctor-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .timings-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            background: #f0fdfa;
+            border-left: 4px solid var(--primary);
+        }
+
+        .timings-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .timings-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .timings-card li {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        /* Footer & Contact Block */
+        .flyer-footer {
+            border-top: 2px solid var(--border-color);
+            padding-top: 6mm;
+            margin-top: 8mm;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .footer-address h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .footer-address p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .footer-contacts {
+            text-align: right;
+        }
+
+        .phone-block {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .phone-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Printing Style Rules Override */
+        @media print {
+            .no-print-controls {
+                display: none;
+            }
+            body {
+                background: white;
+                padding: 0;
+            }
+            .a4-container {
+                box-shadow: none;
+                padding: 10mm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Navigation Controls (Hidden in Print Mode) -->
+    <div class="no-print-controls">
+        <a href="index.html" class="btn-back">← Back to Site</a>
+        <button onclick="window.print()" class="btn-print">🖨️ Print / Save as PDF</button>
+    </div>
+
+    <!-- Printable A4 Document Page -->
+    <div class="a4-container">
+        
+        <!-- Header -->
+        <div class="flyer-header">
+            <div class="logo-block">
+                <svg class="logo-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                <div class="logo-text">मेवाड़ <span>क्लिनिक</span></div>
+            </div>
+            <div class="badge-emergency">🚨 24x7 Emergency Call Available</div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="main-grid">
+            
+            <!-- Left specialties column -->
+            <div class="left-col">
+                <div>
+                    <h2 class="section-title">लेजर एवं क्षारसूत्र चिकित्सा</h2>
+                    
+                    <div class="service-card" style="margin-bottom: 12px;">
+                        <h3>बवासीer, भगन्दर & फिशर लेजर इलाज</h3>
+                        <p>Get permanent, painless recovery from rectal diseases using modern, high-tech German laser systems. Zero cuts and same-day discharge.</p>
+                        <ul class="bullet-list">
+                            <li>बिना दर्द (No Pain)</li>
+                            <li>बिना टांके (No Cuts)</li>
+                            <li>15 मिनट प्रक्रिया</li>
+                            <li>कम खून बहना</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>क्षारसूत्र चिकित्सा (Kshar Sutra Therapy)</h3>
+                        <p>Specialized Ayurvedic para-surgical therapy for complex and recurrent fistulas. Zero recurrence rates under expert guidance.</p>
+                        <ul class="bullet-list" style="grid-template-columns: 1fr;">
+                            <li>No side effects</li>
+                            <li>Natural recovery path</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="section-title">सामान्य चिकित्सा एवं जांच</h2>
+                    <div class="service-card">
+                        <h3>आधुनिक पैथोलॉजी लैब व ECG</h3>
+                        <p>Complete diagnostics support including heart ECG screening and lifestyle conditions monitoring under one single roof.</p>
+                        <ul class="bullet-list">
+                            <li>डायबिटीज व थायराइड</li>
+                            <li>ब्लड प्रेशर व दिल जांच</li>
+                            <li>ECG (ईसीजी) सुविधा</li>
+                            <li>डेंगू व मौसमी बुखार</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right doctor column -->
+            <div class="right-col">
+                <div class="doctor-card">
+                    <img src="assets/dr_sher_singh.png" alt="Dr. Sher Singh" class="doctor-photo">
+                    <h3 class="doctor-name">Dr. Sher Singh (Jat)</h3>
+                    <div class="doctor-sub">चिकित्सा अधिकारी प्रभारी (Medical Officer In-Charge)</div>
+                    <span class="doctor-exp">Former Doctor: Sharma Hospital</span>
+                    <p class="doctor-text">
+                        Respected medical physician in Rajsamand. Formerly a core practitioner at Kankroli's Sharma Hospital. Dedicated to premium, modern, and effective patient care.
+                    </p>
+                </div>
+
+                <div class="timings-card">
+                    <h4>🕒 Consultation Hours</h4>
+                    <ul>
+                        <li><strong>OPD Timings:</strong> 3:00 PM to 9:00 AM (Next Day)</li>
+                        <li><strong>Primary Duty Station:</strong> Medical Officer In-Charge at R.A.A. Sangath (Kalan), Rajsamand</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card" style="border-left: 4px solid #3b82f6; background: #eff6ff; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 15px;">
+                    <span style="font-size: 1.5rem; margin-bottom: 5px;">📱</span>
+                    <h4 style="font-size: 0.9rem; color: #1e3a8a; font-weight: 700; margin-bottom: 5px;">Online Appointment</h4>
+                    <p style="font-size: 0.75rem; color: #1e40af; margin-bottom: 8px;">Scan to book or visit our website:</p>
+                    <div style="font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 700; color: #1d4ed8; border: 1px dashed #3b82f6; padding: 4px 10px; background: white; border-radius: 4px;">
+                        weblaunchlabs.com/demos/mewar-clinic/
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer block -->
+        <div class="flyer-footer">
+            <div class="footer-address">
+                <h4>📍 मेवाड़ क्लिनिक का पता</h4>
+                <p>Near HP Petrol Pump, Nathdwara Road, Dhoinda Kankroli,<br>Rajsamand, Rajasthan - 313324</p>
+            </div>
+            <div class="footer-contacts">
+                <div class="phone-block">+91 96729-05540</div>
+                <div class="phone-sub">+91 96641-33763 (Helpline)</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
