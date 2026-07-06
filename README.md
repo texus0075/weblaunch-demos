@@ -21,12 +21,12 @@ git init
 git add .
 git commit -m "Initialize demo hub with Mewar Clinic"
 git branch -M main
-git remote add origin https://github.com/faltu087/weblaunch-demos.git
+git remote add origin https://github.com/texus0075/weblaunch-demos.git
 git push -u origin main -f
 ```
 
 ### Step 3: Enable GitHub Pages
-1. Go to your new repository page on GitHub: `https://github.com/faltu087/weblaunch-demos`
+1. Go to your new repository page on GitHub: `https://github.com/texus0075/weblaunch-demos`
 2. Click on the **Settings** tab (the gear icon on top).
 3. In the left sidebar, click on **Pages** (under the "Code and automation" section).
 4. Under **"Build and deployment" -> "Source"**, make sure **"Deploy from a branch"** is selected.
@@ -39,9 +39,9 @@ git push -u origin main -f
 Once configured, GitHub will deploy your site in less than 1 minute. Your live links will be:
 
 * **Demo Hub Dashboard:**
-  `https://faltu087.github.io/weblaunch-demos/`
+  `https://texus0075.github.io/weblaunch-demos/`
 
 * **Mewar Clinic Live Preview:**
-  `https://faltu087.github.io/weblaunch-demos/demos/mewar-clinic/`
+  `https://texus0075.github.io/weblaunch-demos/demos/mewar-clinic/`
 
 *(No trailing slashes needed, and these links will load instantly across the globe using GitHub's Fastly CDN edge caching!)*
