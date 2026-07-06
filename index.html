@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebLaunch Labs | Cold Outreach Demo Hub</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #09090b;
+            --bg-card: rgba(18, 18, 24, 0.7);
+            --primary: #0d9488;
+            --primary-glow: linear-gradient(135deg, #0d9488 0%, #0284c7 100%);
+            --border-glow: rgba(13, 148, 136, 0.3);
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --font-outfit: 'Outfit', sans-serif;
+            --font-inter: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-inter);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Gradient background decoration */
+        .glow-bg {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-family: var(--font-outfit);
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: var(--primary-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .demo-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-glow);
+            box-shadow: 0 10px 30px rgba(13, 148, 136, 0.15);
+        }
+
+        .card-preview {
+            height: 180px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-family: var(--font-outfit);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .features-list li {
+            font-size: 0.85rem;
+            color: #d1d5db;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .card-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--primary-glow);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+            text-decoration: none;
+        }
+
+        .card-btn:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <div class="container">
+        <header>
+            <h1>Speculative Outreach Hub</h1>
+            <p>Your high-converting web launch demo catalog. Send these working links directly to prospects to close deals instantly.</p>
+        </header>
+
+        <div class="demo-grid">
+            <!-- Mewar Clinic Demo Card -->
+            <div class="demo-card">
+                <div class="card-preview">
+                    🏥
+                    <span class="card-badge">Premium Plan</span>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h2 class="card-title">Mewar Clinic</h2>
+                        <p class="card-desc">Bilingual clinical landing page customized for Dr. Sher Singh in Rajsamand. Prominent emergency and laser treatments focus.</p>
+                        <ul class="features-list">
+                            <li>Bilingual Copy (Hindi + English)</li>
+                            <li>Direct WhatsApp Lead Form</li>
+                            <li>Direct Google Maps Embedded</li>
+                            <li>Interactive Play Store Reviews Card</li>
+                        </ul>
+                    </div>
+                    <a href="demos/mewar-clinic/index.html" class="card-btn" target="_blank">View Live Demo 🚀</a>
+                </div>
+            </div>
+            
+            <!-- Future demo placeholder -->
+            <div class="demo-card" style="opacity: 0.5; border-style: dashed;">
+                <div class="card-preview" style="background: transparent;">
+                    ➕
+                </div>
+                <div class="card-body" style="justify-content: center; align-items: center; text-align: center;">
+                    <h2 class="card-title" style="color: var(--text-muted);">Next Client Demo</h2>
+                    <p class="card-desc">Add a new niche demo directory under /demos/ to show it here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 WebLaunch Labs. Managed via GitHub Pages CDN. <a href="https://weblaunchlabs.com">Main Website</a></p>
+    </footer>
+
+</body>
+</html>
